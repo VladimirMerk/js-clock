@@ -1,29 +1,3 @@
-/*
-Позиционирование
-Блочная модель
-Типографика
-Оформление
-Анимация
-Разное
-*/
-
-/*
-.selector,
-.selector-secondary,
-.selector[type="text"] {
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 1px 2px #cccccc, inset 0 1px 0 #ffffff;
-}
-*/
-
-/*
-Альтернативные шрифты
-body {
-  font-family: "Helvetica", "Tahoma", sans-serif;
-}
-*/
 .clock {
     position: absolute;
     left: 50%;
@@ -38,9 +12,9 @@ body {
     color: #ffffff;
     width: 100%;
     text-align: center;
-    z-index: 1;
+    z-index: 2;
     text-decoration: none;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Cutive Mono', monospace;
 }
 .clock .main-timer {
     width: 300px;

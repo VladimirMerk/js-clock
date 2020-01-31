@@ -1,45 +1,106 @@
 .clock {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -150px;
-    margin-top: -200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -200px;
 }
+
 .clock .title {
-    position: absolute;
-    left: 0;
-    bottom: 30px;
-    color: #ffffff;
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-    text-decoration: none;
-    font-family: 'Cutive Mono', monospace;
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  text-decoration: none;
+  font-family: 'Cutive Mono', monospace;
 }
+
 .clock .main-timer {
-    width: 300px;
-    height: 300px;
-    background-color: #000000;
-    border-radius: 150px;
-    box-shadow: 6px 6px 15px 0px #848484;
+  width: 300px;
+  height: 300px;
+  background-color: #000;
+  border-radius: 150px;
+  box-shadow: 6px 6px 15px 0 #848484;
 }
+
 .clock .second-timer,
-.clock .second-timer:before {
-    content: "";
-    background-color: #000000;
-    width: 190px;
-    height: 190px;
-    border-radius: 45px;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
+.clock .second-timer::before {
+  content: "";
+  background-color: #000;
+  width: 190px;
+  height: 190px;
+  border-radius: 45px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
-.clock .second-timer:before {
-  box-shadow: 6px 6px 15px 0px #848484;
+
+.clock .second-timer::before {
+  box-shadow: 6px 6px 15px 0 #848484;
   z-index: -1;
 }
+
+.clock .second-timer .stopwatch {
+  background-color: #fff;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  border-radius: 45px;
+}
+
+.clock .second-timer .stopwatch::after {
+  content: "";
+  background-color: #fff;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  border-radius: 45px;
+  z-index: 2;
+}
+
+.clock .second-timer .stopwatch .second-hand {
+  position: absolute;
+  left: calc(50% - 2.5px);
+  bottom: calc(50% - -0.5px);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 2.5px 25px 2.5px;
+  border-color: transparent transparent #f00 transparent;
+  z-index: 3;
+}
+
+.clock .second-timer .stopwatch .second-hand::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #f00;
+  left: -2.5px;
+  bottom: -28px;
+  border-radius: 10px;
+}
+
+.clock .second-timer .stopwatch .second-hand::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #000;
+  left: -1px;
+  bottom: -27px;
+  border-radius: 10px;
+}
+
 .clock .main-timer .hour-hand,
-.clock .main-timer .hour-hand:before,
+.clock .main-timer .hour-hand::before,
 .clock .main-timer .minute-hand,
 .clock .main-timer .second-hand {
   position: absolute;
@@ -50,57 +111,63 @@
   margin-left: -5px;
   margin-top: -5px;
   z-index: 1;
-  transition: transform 0.3s cubic-bezier(.3,2,.5,.4);
+  transition: transform 0.3s cubic-bezier(0.3, 2, 0.5, 0.4);
 }
+
 .clock .main-timer .hour-hand {
   width: 20px;
   height: 20px;
   z-index: 2;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 20px;
   margin-left: -10px;
   margin-top: -10px;
 }
-.clock .main-timer .hour-hand:before {
+
+.clock .main-timer .hour-hand::before {
   content: "";
   width: 14px;
   height: 14px;
   z-index: 2;
-  background-color: #000000;
+  background-color: #000;
   border-radius: 14px;
   margin-left: -7px;
   margin-top: -7px;
 }
-.clock .main-timer .hour-hand:after {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 90px;
-    background-color: #ffffff;
-    bottom: -20px;
-    left: 6px;
-    border-radius: 10px;
+
+.clock .main-timer .hour-hand::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 90px;
+  background-color: #fff;
+  bottom: -20px;
+  left: 6px;
+  border-radius: 10px;
 }
-.clock .main-timer .minute-hand:after {
+
+.clock .main-timer .minute-hand::after {
   content: "";
   position: absolute;
   width: 6px;
   height: 130px;
-  background-color: #ffffff;
+  background-color: #fff;
   bottom: -20px;
   left: 2px;
   border-radius: 10px;
 }
-.clock .main-timer .second-hand:after {
+
+.clock .main-timer .second-hand::after {
   content: "";
   position: absolute;
   width: 2px;
   height: 130px;
-  background-color: #ff0000;
+  background-color: #f00;
   bottom: -20px;
   left: 4px;
   border-radius: 10px;
 }
+
 .clock .markers {
   position: absolute;
   width: 10px;
@@ -108,60 +175,287 @@
   left: 50%;
   top: 50%;
   margin-left: -5px;
-  margin-top: 0px;
+  margin-top: 0;
   z-index: 1;
-  transition: transform 0.3s cubic-bezier(.3,2,.5,.4);
+  transition: transform 0.3s cubic-bezier(0.3, 2, 0.5, 0.4);
 }
-.clock .markers .hour-marker {
+
+.clock .main-timer .markers .hour-marker {
   position: absolute;
   width: 10px;
   height: 150px;
   transform-origin: top;
 }
-.clock .markers .hour-marker:after {
+
+.clock .main-timer .markers .hour-marker::after {
   content: "";
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: #ffffff;
-  bottom: 0px;
-  left: 0px;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
 }
-.clock .markers .hour-marker:nth-child(1) {
+
+.clock .main-timer .markers .hour-marker:nth-child(1) {
   transform: rotate(-180deg);
 }
-.clock .markers .hour-marker:nth-child(2) {
+
+.clock .main-timer .markers .hour-marker:nth-child(2) {
   transform: rotate(-150deg);
 }
-.clock .markers .hour-marker:nth-child(3) {
+
+.clock .main-timer .markers .hour-marker:nth-child(3) {
   transform: rotate(-120deg);
 }
-.clock .markers .hour-marker:nth-child(4) {
+
+.clock .main-timer .markers .hour-marker:nth-child(4) {
   transform: rotate(-90deg);
 }
-.clock .markers .hour-marker:nth-child(5) {
+
+.clock .main-timer .markers .hour-marker:nth-child(5) {
   transform: rotate(-60deg);
 }
-.clock .markers .hour-marker:nth-child(6) {
+
+.clock .main-timer .markers .hour-marker:nth-child(6) {
   transform: rotate(-30deg);
 }
-.clock .markers .hour-marker:nth-child(7) {
+
+.clock .main-timer .markers .hour-marker:nth-child(7) {
   transform: rotate(0deg);
 }
-.clock .markers .hour-marker:nth-child(8) {
+
+.clock .main-timer .markers .hour-marker:nth-child(8) {
   transform: rotate(30deg);
   display: none;
 }
-.clock .markers .hour-marker:nth-child(9) {
+
+.clock .main-timer .markers .hour-marker:nth-child(9) {
   transform: rotate(60deg);
   display: none;
 }
-.clock .markers .hour-marker:nth-child(10) {
+
+.clock .main-timer .markers .hour-marker:nth-child(10) {
   transform: rotate(90deg);
 }
-.clock .markers .hour-marker:nth-child(11) {
+
+.clock .main-timer .markers .hour-marker:nth-child(11) {
   transform: rotate(120deg);
 }
-.clock .markers .hour-marker:nth-child(12) {
+
+.clock .main-timer .markers .hour-marker:nth-child(12) {
   transform: rotate(150deg);
+}
+
+.clock .second-timer::after {
+  content: "";
+}
+
+.clock .second-timer .markers .hour-marker {
+  position: absolute;
+  width: 80px;
+  border: 0.5px solid #000;
+  left: -36px;
+
+  --rotate: 0deg;
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(1) {
+  transform: rotate(calc(var(--rotate) + 3.6deg));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(2) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 2));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(3) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 3));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(4) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 4));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(5) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 5));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(6) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 6));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(7) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 7));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(8) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 8));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(9) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 9));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(10) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 10));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(11) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 11));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(12) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 12));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(13) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 13));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(14) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 14));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(15) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 15));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(16) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 16));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(17) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 17));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(18) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 18));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(19) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 19));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(20) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 20));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(21) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 21));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(22) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 22));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(23) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 23));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(24) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 24));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(25) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 25));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(26) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 26));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(27) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 27));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(28) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 28));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(29) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 29));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(30) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 30));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(31) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 31));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(32) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 32));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(33) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 33));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(34) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 34));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(35) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 35));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(36) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 36));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(37) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 37));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(38) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 38));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(39) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 39));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(40) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 40));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(41) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 41));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(42) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 42));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(43) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 43));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(44) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 44));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(45) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 45));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(46) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 46));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(47) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 47));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(48) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 48));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(49) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 49));
+}
+
+.clock .second-timer .markers .hour-marker:nth-child(50) {
+  transform: rotate(calc((var(--rotate) + 3.6deg) * 50));
 }

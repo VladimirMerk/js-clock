@@ -15,10 +15,11 @@
 
   function setHandsDegrees() {
     const now = new Date();
-    const hour = now.getHours() % 12 || 12;
-    const hourDegrees = 360 / 12 * hour;
     const minute = now.getMinutes();
     const minuteDegrees = 360 / 60 * minute;
+    const hour = now.getHours() % 12 || 12;
+    const hourDegrees = 360 / 12 * (hour + (minute / 60));
+
     const second = now.getSeconds();
     const secondDegrees = (360 / 60 * second);
 

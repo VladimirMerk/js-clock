@@ -9,9 +9,11 @@
 .clock .title {
   position: absolute;
   left: 0;
+  right: 0;
+  margin: 0 auto;
   bottom: 30px;
   color: #fff;
-  width: 100%;
+  width: fit-content;
   text-align: center;
   z-index: 2;
   text-decoration: none;
@@ -66,39 +68,38 @@
   z-index: 2;
 }
 
-.clock .second-timer .stopwatch .second-hand {
-  position: absolute;
-  left: calc(50% - 2.5px);
-  bottom: calc(50% - -0.5px);
-  width: 0;
-  height: 0;
-  transform-origin: bottom center;
-  border-style: solid;
-  border-width: 0 2.5px 25px 2.5px;
-  border-color: transparent transparent #f00 transparent;
-  z-index: 4;
-}
-
 .clock .second-timer .stopwatch .millisecond-hand {
   position: absolute;
-  left: calc(50% - 2px);
+  left: calc(50% - 1px);
   bottom: calc(50% - 1px);
   width: 1px;
-  height: 24px;
+  height: 20px;
   transform-origin: bottom center;
   background-color: #f00;
   z-index: 3;
 }
 
+.clock .second-timer .stopwatch .second-hand {
+  position: absolute;
+  left: calc(50% - 2.5px);
+  bottom: calc(50% - 2.5px);
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: #f00;
+  z-index: 4;
+}
+
 .clock .second-timer .stopwatch .second-hand::before {
   content: "";
   position: absolute;
-  width: 5px;
-  height: 5px;
-  background-color: #f00;
-  left: -2.5px;
-  bottom: -28px;
-  border-radius: 10px;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom: 23px solid #f00;
+  width: 0;
+  height: 0;
+  left: 0.7px;
+  bottom: 1.1px;
 }
 
 .clock .second-timer .stopwatch .second-hand::after {
@@ -107,8 +108,8 @@
   width: 2px;
   height: 2px;
   background-color: #000;
-  left: -1px;
-  bottom: -27px;
+  left: 1.5px;
+  bottom: 1.5px;
   border-radius: 10px;
 }
 
@@ -123,14 +124,14 @@
   top: 50%;
   margin-left: -5px;
   margin-top: -5px;
-  z-index: 1;
+  z-index: 2;
   transition: transform 0.3s cubic-bezier(0.3, 2, 0.5, 0.4);
 }
 
 .clock .main-timer .hour-hand {
   width: 20px;
   height: 20px;
-  z-index: 2;
+  z-index: 3;
   background-color: #fff;
   border-radius: 20px;
   margin-left: -10px;
@@ -471,4 +472,20 @@
 
 .clock .second-timer .markers .hour-marker:nth-child(50) {
   transform: rotate(calc((var(--rotate) + 3.6deg) * 50));
+}
+
+ul#list > li:last-child::after {
+  content: "Reset";
+  display: table-cell;
+  color: rgb(85, 26, 139);
+  cursor: pointer;
+  text-decoration-color: rgb(0, 0, 238);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  width: auto;
+}
+
+ul#list > li:last-child:active::after {
+  color: rgb(255, 0, 0);
+  text-decoration-color: rgb(255, 0, 0);
 }
